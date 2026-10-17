@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+    <title>BeFitNow! | Your Training Mission</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <a href="#" class="logo">BeFit<span>Now!</span></a>
+
+        <nav>
+            <a href="#planner">Planner</a>
+            <a href="#workout">Exercises</a>
+            <a href="#timer">Rest Timer</a>
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            ☀️ Light
+        </button>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">YOUR TRAINING ARC STARTS HERE</p>
+                <h1>TRAIN HARD.<br><span>LEVEL UP.</span></h1>
+                <p class="hero-description">
+                    Every rep brings you closer to your next level.
+                    Build your plan, complete your mission, and keep moving forward.
+                </p>
+                <a href="#planner" class="btn btn-primary">START TRAINING ↗</a>
+            </div>
+
+            <div class="hero-mark" aria-hidden="true">
+                <span>BF</span>
+                <div class="mark-ring"></div>
+                <div class="mark-line"></div>
+            </div>
+
+            <div class="hero-stamp">DISCIPLINE<br>OVER EXCUSES</div>
+        </section>
+
+        <section class="stats-grid" aria-label="Workout statistics">
+            <article class="stat-card">
+                <p>WORKOUTS COMPLETED</p>
+                <h2 id="completedCount">0</h2>
+                <span>Keep the streak alive.</span>
+            </article>
+            <article class="stat-card">
+                <p>EXERCISES TODAY</p>
+                <h2 id="exerciseCount">0</h2>
+                <span>Your current mission.</span>
+            </article>
+            <article class="stat-card">
+                <p>MISSION PROGRESS</p>
+                <h2 id="progressText">0%</h2>
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </article>
+        </section>
+
+        <section id="planner" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">01 / PLAN YOUR SESSION</p>
+                    <h2>Workout <span>Planner</span></h2>
+                </div>
+                <span class="section-tag">YOUR MISSION</span>
+            </div>
+
+            <div class="planner-panel">
+                <div class="form-grid">
+                    <label>
+                        TRAINING DAY
+                        <select id="trainingDay">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        WORKOUT FOCUS
+                        <select id="workoutFocus">
+                            <option value="push">Push Day</option>
+                            <option value="pull">Pull Day</option>
+                            <option value="legs">Leg Day</option>
+                            <option value="upper">Upper Body</option>
+                            <option value="lower">Lower Body</option>
+                            <option value="full">Full Body</option>
+                            <option value="core">Core & Abs</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        TRAINING LEVEL
+                        <select id="trainingLevel">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate" selected>Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="planner-actions">
+                    <button id="generateBtn" class="btn btn-primary">
+                        ⚡ GENERATE WORKOUT
+                    </button>
+                    <button id="exportBtn" class="btn btn-outline">
+                        ↓ EXPORT TO CALENDAR
+                    </button>
+                </div>
+
+                <p id="plannerMessage" class="message" role="status" aria-live="polite">
+                    Choose your settings and generate your next mission.
+                </p>
+            </div>
+        </section>
+
+        <section id="workout" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">02 / EXECUTE YOUR PLAN</p>
+                    <h2 id="workoutTitle">Today's <span>Mission</span></h2>
+                </div>
+                <span id="workoutDayLabel" class="section-tag">MONDAY</span>
+            </div>
+
+            <div id="exerciseList" class="exercise-list"></div>
+        </section>
+
+        <section id="timer" class="section timer-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">03 / RECOVER & RELOAD</p>
+                    <h2>Rest <span>Timer</span></h2>
+                </div>
+                <span class="section-tag">RECOVERY MODE</span>
+            </div>
+
+            <div class="timer-panel">
+                <div class="timer-display">
+                    <div class="timer-ring">
+                        <span id="timerDisplay">01:30</span>
+                        <small>REST TIME</small>
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <p>Reset your breathing. Prepare for the next set.</p>
+
+                    <div class="timer-presets">
+                        <button class="preset-btn" data-seconds="30">30 SEC</button>
+                        <button class="preset-btn" data-seconds="60">60 SEC</button>
+                        <button class="preset-btn active" data-seconds="90">90 SEC</button>
+                        <button class="preset-btn" data-seconds="120">120 SEC</button>
+                    </div>
+
+                    <div class="timer-buttons">
+                        <button id="startTimer" class="btn btn-primary">▶ START</button>
+                        <button id="resetTimer" class="btn btn-outline">↻ RESET</button>
+                    </div>
+
+                    <p id="timerMessage" class="message" role="status" aria-live="polite">
+                        Ready when you are.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="motivation">
+            <span class="motivation-mark">!</span>
+            <div>
+                <p class="eyebrow">YOUR DAILY REMINDER</p>
+                <h2>CONSISTENCY BUILDS <span>STRENGTH.</span></h2>
+                <p>Train at your own pace. Progress is earned one session at a time.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#" class="logo">BeFit<span>Now!</span></a>
+        <p>BUILT FOR YOUR NEXT LEVEL. &copy; <span id="year"></span></p>
+    </footer>
+</body>
+</html>
